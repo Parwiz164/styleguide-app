@@ -1,0 +1,24 @@
+{
+  "name": "styleguide-client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "auth0-js": "^9.5.0",
+    "bootstrap": "^3.3.7",
+    "react": "^16.3.2",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.3.2",
+    "react-scripts": "1.1.4",
+    "reactstrap": "^5.0.0-beta.3",
+    "styled-components": "^3.2.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-router-dom": "^4.3.0-rc.2"
+  }
+}

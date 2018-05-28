@@ -1,0 +1,28 @@
+/*
+Theme Name: amazingstyleguide
+Author: Amazing
+Author URI: http://www.amazing.nl
+Description: Amazing amazingstyleguide theme with SASS feature
+Version: beta
+Text Domain: amazingstyleguide
+License: GNU General Public License v3.0 /
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+
+// Load Variables FIRSTfont-awesome.scss
+@import "sass/variables";
+
+
+//Load Mixins
+@import "sass/mixins";
+
+
+//Load theme styling
+@import "sass/resets";
+@import "sass/global";
+@import "sass/header";
+@import "sass/navigation";
+@import "sass/posts";
+@import "sass/content";
+@import "sass/footer";
+

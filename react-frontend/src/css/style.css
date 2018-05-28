@@ -1,0 +1,40 @@
+
+
+.first-content-row {
+    padding: 30 20 30 20;
+    min-height: 100px;
+}
+
+.second-content-row {
+    padding: 30 20 30 20;
+    min-height:100px;
+
+}
+
+.app {
+    min-height: 100vh;
+}
+
+.contentBody {
+    min-height: 100vh;
+}
+
+.app .navbar-default {
+    color:white;
+    background-color:#24b69c;
+}
+
+.app .navbar-default .navbar-brand{
+    color: white;
+}
+.app .navbar-default .navbar-brand:hover{
+    color: white;
+}
+
+.app .navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.formgroup {
+    padding:10px;
+}

@@ -1,0 +1,28 @@
+/*!
+ *
+ * Overwrite default variables
+ * Define your variables in sections
+ *
+ */
+
+//== Font-Awesome
+$fa-font-path: "/wp-content/themes/amazing-starter-theme/fonts";
+
+
+//== Typography
+//$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+//$font-size-base:          14px !default;
+//$line-height-base:        1.428571429 !default; // 20/14
+//$headings-font-weight:    500 !default;
+
+
+//== Colors
+$brand-primary: #000;
+$color-black: #000;
+$color-white: #fff;
+$text-color: $color-black;
+$text-diap: $color-white;
+
+
+
+//== Buttons

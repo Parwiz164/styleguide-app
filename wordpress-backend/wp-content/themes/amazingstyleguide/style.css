@@ -1,0 +1,200 @@
+/*
+Theme Name: amazingstyleguide
+Author: Amazing
+Author URI: http://www.amazing.nl
+Description: Amazing amazingstyleguide theme with SASS feature
+Version: beta
+Text Domain: amazingstyleguide
+License: GNU General Public License v3.0 /
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+/*!
+ *
+ * Overwrite default variables
+ * Define your variables in sections
+ *
+ */
+/*!
+ *
+ * Overwrite default mixins
+ * Or create new ones
+ *
+ */
+/*!
+ *
+ * _TK theme specific setting and resets!
+ *
+ */
+/* _TK theme specific styling */
+/* line 10, sass/_resets.scss */
+.wp-caption {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  max-width: 100%;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+/* line 17, sass/_resets.scss */
+.wp-caption.aligncenter {
+  margin-bottom: 10px;
+}
+
+/* line 20, sass/_resets.scss */
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+}
+
+/* line 23, sass/_resets.scss */
+.wp-caption .wp-caption-text {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* WP Gallery */
+/* line 29, sass/_resets.scss */
+.gallery {
+  margin-bottom: 1.5em;
+}
+
+/* line 32, sass/_resets.scss */
+.gallery a img {
+  border: none;
+  height: auto;
+  max-width: 90%;
+}
+
+/* line 37, sass/_resets.scss */
+.gallery dd {
+  margin: 0;
+}
+
+/* line 40, sass/_resets.scss */
+.gallery-caption {
+  display: block;
+}
+
+/* Text meant only for screen readers */
+/* line 45, sass/_resets.scss */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+
+/* line 49, sass/_resets.scss */
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+  background-color: #fff;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #000;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar */
+}
+
+/* Clearing */
+/* line 71, sass/_resets.scss */
+.clear {
+  clear: both;
+}
+
+/* Here some needed widget styles
+ * Most widgets are adapted in the file bootstrap-wp.js - and REALLY easy to modify! ;) */
+/* line 77, sass/_resets.scss */
+.widget {
+  margin-bottom: 2em;
+}
+
+/* line 80, sass/_resets.scss */
+.widget_nav_menu ul.sub-menu li, .widget_pages ul.children li {
+  padding-left: 15px;
+}
+
+/* Hiding the search widget's button in widgets. thats just too old-skool. :) but if you want it back, just delete the next line.
+ * Note: you can change the whole appearance of the search_form() function in our searchform.php */
+/* line 86, sass/_resets.scss */
+.widget_search .search-form input[type="submit"] {
+  display: none;
+}
+
+/* Make sure select elements fit in widgets */
+/* line 91, sass/_resets.scss */
+.widget select {
+  max-width: 100%;
+}
+
+/* Nested comments? They are threaded and nested already, you just need to add your own styling to finalize!
+ * For example with some margin, like the line below ;) Delete, modify, change classes in HTML if you desire another style */
+/* line 97, sass/_resets.scss */
+.comment .children {
+  margin-left: 1.5em;
+}
+
+/*!
+ *
+ * Default HTML attributes styling no classes!
+ *
+ */
+/* line 7, sass/_global.scss */
+body {
+  word-wrap: break-word;
+  color: #000;
+}
+
+/* Images and wp-captions should always fit and be responsive */
+/* line 13, sass/_global.scss */
+img {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Make sure embeds and iframes fit their containers */
+/* line 20, sass/_global.scss */
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+
+/*!
+ *
+ * section: Header styling
+ *
+ */
+/*!
+ *
+ * section: Navigation styling
+ *
+ */
+/*!
+ *
+ * section: Posts styling
+ *
+ */
+/*!
+ *
+ * Main site content
+ *
+ */
+/*!
+ *
+ * section: Footer styling
+ *
+ */
+
+/*# sourceMappingURL=style.css.map */

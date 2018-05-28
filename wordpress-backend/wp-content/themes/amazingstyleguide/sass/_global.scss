@@ -1,0 +1,24 @@
+/*!
+ *
+ * Default HTML attributes styling no classes!
+ *
+ */
+
+body {
+  word-wrap: break-word;
+  color: $text-color;
+}
+
+/* Images and wp-captions should always fit and be responsive */
+img {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Make sure embeds and iframes fit their containers */
+embed,
+iframe,
+object {
+  max-width: 100%;
+}

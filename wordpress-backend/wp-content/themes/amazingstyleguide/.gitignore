@@ -1,0 +1,10 @@
+.sass-cache
+node_modules
+.idea
+.DS_Store
+*[Tt]humbs.db
+*.map
+*.log
+/wp-content/wflogs
+Iconr
+Icon?

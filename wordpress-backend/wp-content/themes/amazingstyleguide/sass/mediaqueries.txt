@@ -1,0 +1,19 @@
+/* Small Screens Mobile devices 480px
+================================================== */
+@media only screen and (min-width: $screen-xs) {
+}
+
+/* Tablet Screen 768px
+================================================== */
+@media only screen and (min-width: $screen-sm) {
+}
+
+/* Medium Desktops Screens 992px
+================================================== */
+@media only screen and (min-width: $screen-md) {
+}
+
+/* Large Desktops Screens 1200px
+================================================== */
+@media only screen and (min-width: $screen-lg) {
+}

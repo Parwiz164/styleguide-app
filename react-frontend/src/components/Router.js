@@ -66,7 +66,7 @@ class Router extends React.Component {
 
   render() {
     return (
-      <BrowserRouter basename="frontend/">
+      <BrowserRouter>
         <Switch>
           <PropsRoute
             exact

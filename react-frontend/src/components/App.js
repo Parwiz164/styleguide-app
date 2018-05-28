@@ -17,7 +17,23 @@ class App extends React.Component {
     showContent: false
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    let api = new Api();
+
+    let page = this.props.pageName;
+
+    await api
+      .subPages({ name: this.state.pageName })
+      .then(result => {
+        const pages = result;
+        this.setState({
+          pages
+        });
+      })
+      .catch(error => {
+        alert(error);
+      });
+
     const { params } = this.props.match;
     // first reinstate our localStorage
     const localStorageRef = localStorage.getItem(params.pageId);
@@ -72,12 +88,12 @@ class App extends React.Component {
   };
 
   render() {
-    var subPages = this.props.fetchData.filter(page => {
-      return (
-        page.slug.indexOf(`${this.props.match.params.pageId.toLowerCase()}-`) >
-        -1
-      );
-    });
+    // var subPages = this.props.fetchData.filter(page => {
+    //   return (
+    //     page.slug.indexOf(`${this.props.match.params.pageId.toLowerCase()}-`) >
+    //     -1
+    //   );
+    // });
 
     return (
       <div className={"container"}>
@@ -87,9 +103,8 @@ class App extends React.Component {
             ? this.renderContent(this.state.content)
             : "kies een categorie van rechts =>"}
         </div>
-        {console.log(subPages)}
         <div className="col-xs-2 sidebar">
-          <ListGroup>{subPages.map(this.renderSubpages)}</ListGroup>
+          {/* <ListGroup>{subPages.map(this.renderSubpages)}</ListGroup> */}
         </div>
       </div>
     );

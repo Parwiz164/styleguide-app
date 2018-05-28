@@ -6,14 +6,12 @@ import { Link } from "react-router-dom";
 const Header = props => (
   <Navbar>
     <Navbar.Header>
-      <Navbar.Brand>
-        <a href="/"> Huisstijl manual </a>
-      </Navbar.Brand>
+      <Navbar.Brand>Huisstijl manual</Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
-      <Nav>
-        <NavItem>
+      <Nav className="navbar-nav">
+        <NavItem componentClass="span">
           <Link to="/projectpicker">
             <strong>{props.tagline}</strong>
           </Link>

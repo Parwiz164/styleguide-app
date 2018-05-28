@@ -21,9 +21,8 @@ const Auth = {
         password: password
       })
       .then(project => {
-        store(project.id);
+        store(project.name);
         // change the page to /project/whatever-they-entered
-        history.push(`/project/${project.title.rendered}`);
       })
       .catch(error => alert(error + "wachtwoord verkeerd!"));
   },

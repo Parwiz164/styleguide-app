@@ -2,6 +2,24 @@ const baseUrl = "http://localhost:8080/wp-json/wp/v2/";
 const authUrl = "https://styleguide.localhost/wp-json/jwt-auth/v1";
 
 export default class Api {
+  // Get all subpages
+  subPages(options = {}) {
+    let url = `${baseUrl}pages`;
+
+    if (options.name !== undefined) {
+      url += `?search=${options.name}`;
+    }
+
+    return fetch(url).then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Project doesnt exist ...");
+      }
+    });
+  }
+
+  // Get all pages
   pages(options = {}) {
     let url = `${baseUrl}pages`;
 
@@ -13,6 +31,23 @@ export default class Api {
       url += "?_embed";
     }
 
+    return fetch(url).then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Project doesnt exist ...");
+      }
+    });
+  }
+  // Get project page
+  page(options = {}) {
+    let url = `${baseUrl}pages`;
+
+    if (options.name !== undefined) {
+      url += `?slug=${options.name}`;
+    }
+
+    console.log(url);
     return fetch(url).then(response => {
       if (response.ok) {
         return response.json();

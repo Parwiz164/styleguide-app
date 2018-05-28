@@ -43,49 +43,14 @@ const PropsRoute = ({ component, ...rest }) => {
   );
 };
 
-class Router extends React.Component {
-  state = {
-    pages: []
-  };
-
-  async componentDidMount() {
-    let api = new Api();
-
-    await api
-      .pages()
-      .then(result => {
-        const pages = result;
-        this.setState({
-          pages
-        });
-      })
-      .catch(error => {
-        alert(error);
-      });
-  }
-
+export default class Router extends React.Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <PropsRoute
-            exact
-            path="/"
-            component={Layout}
-            fetchData={this.state.pages}
-          />
-          <PropsRoute
-            exact
-            path="/projectpicker"
-            component={ProjectPicker}
-            fetchData={this.state.pages}
-          />
-          <PrivateRoute
-            exact
-            path="/project/:pageId"
-            component={App}
-            fetchData={this.state.pages}
-          />
+          <PropsRoute exact path="/" component={Layout} />
+          <PropsRoute path="/projectpicker" component={ProjectPicker} />
+
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
@@ -93,4 +58,4 @@ class Router extends React.Component {
   }
 }
 
-export default Router;
+export { PrivateRoute };

@@ -6,17 +6,47 @@ import Layout from "./Layout";
 import { PrivateRoute } from "./Router";
 import App from "./App";
 import { Link, Route, Redirect, Switch } from "react-router-dom";
+import Header from "./Header";
 
 const api = new Api();
 
 class ProjectPicker extends React.Component {
   state = {
-    projectName: "Sparta",
-    redirect: false
+    projectName: "",
+    redirect: false,
+    pageId: null,
+    subPages: null,
+    content: {
+      title: {
+        rendered: "kies een categorie van rechts"
+      }
+    },
+    showContent: false,
+    signedIn: false
   };
 
   myInput = React.createRef();
   myPassword = React.createRef();
+
+  componentDidMount() {
+    var data = sessionStorage.getItem("ApiTokenValue");
+    const localStorageRef = localStorage.getItem(data);
+    if (localStorageRef) {
+      this.setState({
+        projectName: JSON.parse(localStorageRef).projectName,
+        redirect: JSON.parse(localStorageRef).redirect,
+        pageId: JSON.parse(localStorageRef).pageId,
+        subPages: JSON.parse(localStorageRef).subPages,
+        content: JSON.parse(localStorageRef).content,
+        showContent: JSON.parse(localStorageRef).showContent
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    var data = sessionStorage.getItem("ApiTokenValue");
+    localStorage.setItem(data, JSON.stringify(this.state));
+  }
 
   goToProject = async event => {
     //  Stop the form from submitting
@@ -37,33 +67,66 @@ class ProjectPicker extends React.Component {
       .catch(error => {
         alert(error);
       });
-    console.log(page);
+
+    await api
+      .subPages({ name: projectName })
+      .then(result => {
+        const pages = result;
+        this.setState({
+          subPages: pages,
+          projectName: projectName
+        });
+      })
+      .catch(error => {
+        alert(error);
+      });
+
     if (page.id !== undefined) {
       Auth.authenticate(page.id, password, this.props.history);
       this.setState({
-        redirect: true
+        redirect: true,
+        pageId: page.id,
+        signedIn: true
       });
     } else {
       alert("page doesnt exits!");
     }
   };
 
+  changeContentHandler = page => {
+    let content = { ...this.state.content };
+
+    content = page;
+
+    this.setState({
+      content: content,
+      showContent: true
+    });
+  };
+
   render() {
     if (this.state.redirect) {
-      console.log(" redirected");
       return (
-        <div>
-          <Link to={`projectpicker/${this.state.projectName}`} />;
-          <Switch>
-            <PrivateRoute exact path="/projectpicker" component={App} />
-            <PrivateRoute exact path="/projectpicker/:pageId" component={App} />
-          </Switch>
+        <div className="container">
+          <Header projectNaam={this.state.projectName} />
+          <App
+            pageName={this.state.projectName}
+            pageId={this.state.pageId}
+            subPages={this.state.subPages}
+            showContent={this.state.showContent}
+            content={this.state.content}
+            onChange={this.changeContentHandler}
+          />
         </div>
       );
     }
 
     return (
-      <Layout>
+      <div className="container">
+        <Header
+          projectNaam={this.state.projectName}
+          status={this.state.signedIn ? "Log uit" : ""}
+        />
         <Form className="store-selector" onSubmit={this.goToProject}>
           <h2>Voer een project naam in</h2>
           <input
@@ -80,7 +143,7 @@ class ProjectPicker extends React.Component {
           />
           <Button type="submit">Ga naar project →</Button>
         </Form>
-      </Layout>
+      </div>
     );
   }
 }

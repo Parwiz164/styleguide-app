@@ -6,6 +6,7 @@ import NotFound from "./NotFound";
 import Auth from "../services/Auth";
 import Api from "../services/api";
 import Layout from "./Layout";
+import PageContent from "./PageContent";
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
@@ -50,7 +51,6 @@ export default class Router extends React.Component {
         <Switch>
           <PropsRoute exact path="/" component={Layout} />
           <PropsRoute path="/projectpicker" component={ProjectPicker} />
-
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

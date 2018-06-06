@@ -1,5 +1,5 @@
 <?php
 /**
  *
- * Template Name: tinten
+ * Template Name: Tinten
  */

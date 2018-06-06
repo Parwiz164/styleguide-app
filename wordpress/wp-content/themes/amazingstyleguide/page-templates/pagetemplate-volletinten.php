@@ -1,5 +1,5 @@
 <?php
 /**
  *
- * Template Name: volletinten
+ * Template Name: Volle tinten
  */

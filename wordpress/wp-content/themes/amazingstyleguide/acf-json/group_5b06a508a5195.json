@@ -1,11 +1,11 @@
 {
     "key": "group_5b06a508a5195",
-    "title": "Volletinten",
+    "title": "Volle tinten",
     "fields": [
         {
             "key": "field_5b06a51de4ff7",
-            "label": "volletinten",
-            "name": "volletinten",
+            "label": "Volle tinten",
+            "name": "volle_tinten",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -19,7 +19,7 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Nieuwe volle tint",
             "sub_fields": [
                 {
                     "key": "field_5b06a5b6e4ff8",
@@ -73,6 +73,44 @@
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
+                },
+                {
+                    "key": "field_5b17ee19381c6",
+                    "label": "Pantone",
+                    "name": "pantone",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5b17ee1f381c7",
+                    "label": "RAL",
+                    "name": "ral",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -94,5 +132,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1527164725
+    "modified": 1528294979
 }

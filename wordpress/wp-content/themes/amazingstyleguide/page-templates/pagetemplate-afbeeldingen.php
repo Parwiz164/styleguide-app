@@ -1,5 +1,5 @@
 <?php
 /**
  *
- * Template Name: afbeeldingen
+ * Template Name: Afbeeldingen
  */

@@ -1,11 +1,11 @@
 {
     "key": "group_5b06b1f943142",
-    "title": "afbeelding met toelichting en keuze",
+    "title": "Afbeeldingen met toelichting en keuze",
     "fields": [
         {
             "key": "field_5b06b1fb0850d",
-            "label": "afbeelding met keuze",
-            "name": "afbeelding_met_keuze",
+            "label": "Afbeelding met toelichting en keuze",
+            "name": "afbeelding_met_toelichting_en_keuze",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -19,7 +19,7 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Nieuwe afbeelding met toelichting en keuze",
             "sub_fields": [
                 {
                     "key": "field_5b153f6e23079",
@@ -47,8 +47,8 @@
                 },
                 {
                     "key": "field_5b1544cf81acd",
-                    "label": "toelichting bij afbeelding",
-                    "name": "toelichting_bij_afbeelding",
+                    "label": "Toelichting",
+                    "name": "Toelichting",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -66,22 +66,27 @@
                 },
                 {
                     "key": "field_5b1544da81ace",
-                    "label": "wel of niet",
+                    "label": "Wel of niet",
                     "name": "wel_of_niet",
-                    "type": "true_false",
+                    "type": "radio",
                     "instructions": "",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "message": "",
-                    "default_value": 0,
-                    "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
+                    "choices": {
+                        "wel": "Wel",
+                        "niet": "Niet"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": "",
+                    "layout": "vertical",
+                    "return_format": "value"
                 }
             ]
         }
@@ -103,5 +108,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1528120642
+    "modified": 1528295827
 }

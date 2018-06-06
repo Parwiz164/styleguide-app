@@ -19,12 +19,12 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Nieuwe tint",
             "sub_fields": [
                 {
                     "key": "field_5b06b08426bc9",
-                    "label": "tint",
-                    "name": "tint",
+                    "label": "Naam",
+                    "name": "naam",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -41,8 +41,23 @@
                     "maxlength": ""
                 },
                 {
+                    "key": "field_5b06d4f00cd25",
+                    "label": "Kleur",
+                    "name": "kleur",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                },
+                {
                     "key": "field_5b06b0a526bca",
-                    "label": "%",
+                    "label": "Percentage",
                     "name": "percentage",
                     "type": "number",
                     "instructions": "",
@@ -60,21 +75,6 @@
                     "min": "",
                     "max": "",
                     "step": ""
-                },
-                {
-                    "key": "field_5b06d4f00cd25",
-                    "label": "kleur",
-                    "name": "kleur",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": ""
                 }
             ]
         }
@@ -96,5 +96,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1527174430
+    "modified": 1528295058
 }

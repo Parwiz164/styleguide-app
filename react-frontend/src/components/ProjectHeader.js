@@ -6,10 +6,7 @@ class Header extends React.Component {
     return (
       <Navbar>
         <Navbar.Header>
-          <Navbar.Brand>
-            Styleguide{" "}
-            {this.props.projectNaam !== "" ? this.props.projectNaam : ""}{" "}
-          </Navbar.Brand>
+          <Navbar.Brand>Styleguide</Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>

@@ -21,7 +21,6 @@ const Auth = {
         password: password
       })
       .then(page => {
-        console.log(page);
         store(page.id);
       })
       .catch(error => alert("wachtwoord verkeerd!"));

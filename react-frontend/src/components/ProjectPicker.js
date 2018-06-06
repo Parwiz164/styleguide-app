@@ -10,16 +10,8 @@ const api = new Api();
 
 class ProjectPicker extends React.Component {
   state = {
-    projectName: "",
     redirect: false,
-    pageId: null,
-    subPages: null,
-    content: {
-      title: {
-        rendered: "kies een categorie van rechts"
-      }
-    },
-    showContent: false,
+    fetchedPage: null,
     loginPage: true
   };
 
@@ -31,12 +23,7 @@ class ProjectPicker extends React.Component {
     const localStorageRef = localStorage.getItem(data);
     if (localStorageRef) {
       this.setState({
-        projectName: JSON.parse(localStorageRef).projectName,
-        redirect: JSON.parse(localStorageRef).redirect,
-        pageId: JSON.parse(localStorageRef).pageId,
-        subPages: JSON.parse(localStorageRef).subPages,
-        content: JSON.parse(localStorageRef).content,
-        showContent: JSON.parse(localStorageRef).showContent
+        redirect: JSON.parse(localStorageRef).redirect
       });
     }
   }
@@ -78,7 +65,6 @@ class ProjectPicker extends React.Component {
       })
       .then(result => {
         page = result[0];
-        return result;
       })
       .catch(error => {
         alert(error);
@@ -87,29 +73,15 @@ class ProjectPicker extends React.Component {
     //  Check if page is received
     if (page !== undefined) {
       Auth.authenticate(page.id, password);
-
-      await api
-        .subPages({ name: projectName })
-        .then(result => {
-          const pages = result;
-          this.setState({
-            subPages: pages,
-            projectName: projectName,
-            pageId: page.id,
-            signedIn: true
-          });
-        })
-        .catch(error => {
-          alert("Cant get subpages");
+      if (Auth.isAuthenticated) {
+        this.setState({
+          redirect: true,
+          fetchedPage: page
         });
+        console.log(page);
+      }
     } else {
       alert("Page doesnt exits!");
-    }
-
-    if (Auth.isAuthenticated) {
-      this.setState({
-        redirect: true
-      });
     }
   };
 
@@ -119,7 +91,6 @@ class ProjectPicker extends React.Component {
       projectName: "",
       redirect: false,
       pageId: null,
-      subPages: null,
       content: {
         title: {
           rendered: "kies een categorie van rechts"
@@ -131,21 +102,11 @@ class ProjectPicker extends React.Component {
   }
 
   render() {
-    if (this.state.redirect && this.state.projectName !== undefined) {
+    if (this.state.redirect && this.state.fetchedPage !== undefined) {
       return (
         <div>
-          <ProjectHeader
-            projectNaam={this.state.projectName}
-            signOut={this.handleSignOut.bind(this)}
-          />
-          <ProjectPage
-            pageName={this.state.projectName}
-            pageId={this.state.pageId}
-            subPages={this.state.subPages}
-            showContent={this.state.showContent}
-            content={this.state.content}
-            onChange={this.changeContentHandler}
-          />
+          <ProjectHeader signOut={this.handleSignOut.bind(this)} />
+          <ProjectPage fetchedPage={this.state.fetchedPage} />
         </div>
       );
     }

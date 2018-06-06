@@ -19,6 +19,21 @@ export default class Api {
     });
   }
 
+  async children(options = {}) {
+    let url = `${baseUrl}pages`;
+
+    if (options.id !== undefined) {
+      url += `?parent=${options.id}`;
+    }
+    return await fetch(url).then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Project doesnt exist ...");
+      }
+    });
+  }
+
   // Get project page
   page(options = {}) {
     let url = `${baseUrl}pages`;

@@ -10,8 +10,7 @@ const MogelijkhedenPage = props => (
         <div className="col-xs-4">
           {" "}
           adfs
-          <img src={element.afbeelding.url} />{" "}
-          {console.log(element.afbeelding.url)}
+          <img src={element.afbeelding.url} alt="" />{" "}
         </div>;
       })}
     </div>

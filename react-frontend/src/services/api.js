@@ -19,26 +19,6 @@ export default class Api {
     });
   }
 
-  // Get all pages
-  pages(options = {}) {
-    let url = `${baseUrl}pages`;
-
-    if (options.id !== undefined) {
-      url += `/${options.id}`;
-    }
-
-    if (options.password === undefined) {
-      url += "?_embed";
-    }
-
-    return fetch(url).then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error("Project doesnt exist ...");
-      }
-    });
-  }
   // Get project page
   page(options = {}) {
     let url = `${baseUrl}pages`;
@@ -47,7 +27,14 @@ export default class Api {
       url += `?slug=${options.name}`;
     }
 
-    console.log(url);
+    if (options.id !== undefined) {
+      url += `/${options.id}`;
+    }
+
+    if (options.password !== undefined) {
+      url += `?password=${options.password}`;
+    }
+
     return fetch(url).then(response => {
       if (response.ok) {
         return response.json();

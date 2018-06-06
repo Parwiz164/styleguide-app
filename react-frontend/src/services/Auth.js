@@ -12,19 +12,19 @@ const Auth = {
   get isAuthenticated() {
     return store() !== null;
   },
-  async authenticate(pageId, password, history) {
+  async authenticate(pageId, password) {
     let api = new Api();
 
     await api
-      .pages({
+      .page({
         id: pageId,
         password: password
       })
       .then(page => {
+        console.log(page);
         store(page.id);
-        console.log(page.id); // change the page to /project/whatever-they-entered
       })
-      .catch(error => alert(error + "wachtwoord verkeerd!"));
+      .catch(error => alert("wachtwoord verkeerd!"));
   },
   signout(fn) {
     store(null);

@@ -9,27 +9,23 @@ class Header extends React.Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            Huisstijl manual{" "}
+            Styleguide{" "}
             {this.props.projectNaam !== "" ? this.props.projectNaam : ""}{" "}
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          <Nav className="navbar-nav">
-            <NavItem componentClass="span">
-              <Link to={"/projectpicker"}>
-                {" "}
-                {this.props.loggedIn ? "" : "Log in"}
-              </Link>
-            </NavItem>
-          </Nav>
-          <Nav pullRight>
+          <Nav pullRight className="navbar-nav">
             <NavItem
               style={{
                 marginRight: 15
               }}
+              componentClass="span"
             >
-              {this.props.status}
+              <Link to={"/projectpicker"}>
+                {" "}
+                {this.props.loginPage ? "" : "Log in"}
+              </Link>
             </NavItem>
           </Nav>
         </Navbar.Collapse>

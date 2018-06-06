@@ -1,12 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import ProjectPicker from "./ProjectPicker";
-import App from "./App";
 import NotFound from "./NotFound";
 import Auth from "../services/Auth";
-import Api from "../services/api";
-import Layout from "./Layout";
-import PageContent from "./PageContent";
+import HomePage from "../pages/HomePage";
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
@@ -49,7 +46,7 @@ export default class Router extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <PropsRoute exact path="/" component={Layout} />
+          <PropsRoute exact path="/" component={HomePage} />
           <PropsRoute path="/projectpicker" component={ProjectPicker} />
           <Route component={NotFound} />
         </Switch>

@@ -16,6 +16,7 @@ services:
       DB_PASS: root # must match below
       WP_DEBUG: 'true'
   db:
+    container_name: wordpress_db
     image: mysql:5.7
     ports:
       - 3306:3306

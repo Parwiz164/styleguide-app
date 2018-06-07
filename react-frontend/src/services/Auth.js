@@ -26,8 +26,8 @@ const Auth = {
       .catch(error => alert("wachtwoord verkeerd!"));
   },
   signout(fn) {
-    store(null);
     sessionStorage.clear();
+    localStorage.clear();
   }
 };
 

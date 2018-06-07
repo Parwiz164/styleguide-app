@@ -40,47 +40,6 @@ class ProjectPage extends React.Component {
     }
   };
 
-  componentDidMount() {
-    var objInArray = [this.props.fetchedPage];
-    this.childrenFunction(objInArray);
-    console.log(objInArray);
-  }
-
-  childrenFunction(pages) {
-    let childrenData;
-    for (var i in pages) {
-      childrenData = this.getChildren(pages[i].id).then(result => {
-        return result;
-      });
-      console.log(childrenData);
-      if (childrenData.length()) {
-        childrenData = this.childrenFunction(childrenData);
-      }
-
-      pages[i].children = childrenData;
-    }
-
-    console.log(pages);
-    return pages;
-  }
-
-  async getChildren(pageId) {
-    let api = new Api();
-    let newArray;
-    await api
-      .children({
-        id: pageId
-      })
-      .then(result => {
-        newArray = result;
-      })
-      .catch(error => {
-        alert(error);
-      });
-    console.log(newArray);
-    return newArray;
-  }
-
   renderSubpages = page => {
     var contentPages = this.props.subPages.reduce(function(filtered, option) {
       if (option.slug.includes(getSecondPart(page.slug))) {
@@ -122,7 +81,6 @@ class ProjectPage extends React.Component {
     //   }
     //   return filtered;
     // }, []);
-
     return (
       <div className={"container"}>
         <div className="col-xs-8 content">

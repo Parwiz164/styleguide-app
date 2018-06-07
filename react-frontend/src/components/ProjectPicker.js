@@ -12,7 +12,9 @@ class ProjectPicker extends React.Component {
   state = {
     redirect: false,
     fetchedPage: null,
-    loginPage: true
+    loginPage: true,
+    projecDetails: null,
+    isLoading: false
   };
 
   myInput = React.createRef();
@@ -20,17 +22,23 @@ class ProjectPicker extends React.Component {
 
   componentDidMount() {
     var data = sessionStorage.getItem("ApiTokenValue");
+
     const localStorageRef = localStorage.getItem(data);
     if (localStorageRef) {
       this.setState({
-        redirect: JSON.parse(localStorageRef).redirect
+        redirect: JSON.parse(localStorageRef).redirect,
+        fetchedPage: JSON.parse(localStorageRef).fetchedPage,
+        loginPage: JSON.parse(localStorageRef).loginPage,
+        projecDetails: JSON.parse(localStorageRef).projecDetails
       });
     }
   }
 
   componentDidUpdate() {
     var data = sessionStorage.getItem("ApiTokenValue");
-    localStorage.setItem(data, JSON.stringify(this.state));
+    if (data !== null) {
+      localStorage.setItem(data, JSON.stringify(this.state));
+    }
   }
 
   changeContentHandler = page => {
@@ -53,7 +61,7 @@ class ProjectPicker extends React.Component {
   handleLogin = async event => {
     //  Stop the form from submitting
     event.preventDefault();
-
+    this.setState({ isLoading: true });
     //  Get the text from that input
     const projectName = this.myInput.value;
     const password = this.myPassword.value;
@@ -65,51 +73,106 @@ class ProjectPicker extends React.Component {
       })
       .then(result => {
         page = result[0];
+        // page = {
+        //   ...this.childrenFunction(objInArray).map(result => {
+        //     console.log(result);
+        //     return result;
+        //   })[0]
+        // };
       })
       .catch(error => {
         alert(error);
       });
 
+    // this.childrenFunction(page).then(result => {});
+    // console.log(page);
+    // console.log(this.childrenFunction(page));
+
     //  Check if page is received
     if (page !== undefined) {
-      Auth.authenticate(page.id, password);
+      await Auth.authenticate(page.id, password);
+
+      var pageWithChildren = await this.childrenFunction([page]).then(
+        result => {
+          return result;
+        }
+      );
       if (Auth.isAuthenticated) {
         this.setState({
+          isLoading: false,
           redirect: true,
           fetchedPage: page
         });
-        console.log(page);
       }
     } else {
       alert("Page doesnt exits!");
     }
   };
 
-  handleSignOut() {
-    Auth.signout();
-    this.setState({
-      projectName: "",
-      redirect: false,
-      pageId: null,
-      content: {
-        title: {
-          rendered: "kies een categorie van rechts"
+  async childrenFunction(pages) {
+    let childrenData;
+    for (var i in pages) {
+      childrenData = await this.getChildren(pages[i].id).then(result => {
+        if (result.length) {
+          return this.childrenFunction(result);
         }
-      },
-      showContent: false,
-      loginPage: true
-    });
+      });
+      pages[i].children = childrenData;
+    }
+    return pages;
   }
 
+  async getChildren(pageId) {
+    let api = new Api();
+    let newArray;
+
+    return await api
+      .children({
+        id: pageId
+      })
+      .then(result => {
+        return result;
+      })
+      .catch(error => {
+        alert(error);
+      });
+  }
+
+  handleProjectDetailts = key => {
+    this.setState({
+      projecDetails: key
+    });
+    console.log(key);
+  };
+
   render() {
-    if (this.state.redirect && this.state.fetchedPage !== undefined) {
-      return (
-        <div>
-          <ProjectHeader signOut={this.handleSignOut.bind(this)} />
-          <ProjectPage fetchedPage={this.state.fetchedPage} />
-        </div>
-      );
+    {
+      if (this.state.redirect && this.state.fetchedPage !== null) {
+        return !this.state.isLoading ? (
+          <div>
+            <ProjectHeader />
+            <ProjectPage
+              fetchedPage={this.state.fetchedPage}
+              handleDetails={this.handleProjectDetailts.bind(this)}
+            />
+          </div>
+        ) : (
+          <p>is Loading... </p>
+        );
+      }
     }
+
+    // if (this.state.redirect && this.state.fetchedPage !== null) {
+    //   return (
+    //     <div>
+    //       <ProjectHeader signOut={this.handleSignOut.bind(this)} />
+    //       <ProjectPage
+    //         fetchedPage={this.state.fetchedPage}
+    //         handleDetails={this.handleProjectDetailts.bind(this)}
+    //       />
+    //     </div>
+    //   );
+    // }
 
     return (
       <div className="container">

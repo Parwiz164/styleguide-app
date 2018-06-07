@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
+import Auth from "../services/Auth";
 
 class Header extends React.Component {
   render() {
@@ -16,7 +17,7 @@ class Header extends React.Component {
                 marginRight: 15
               }}
               componentClass="span"
-              onClick={this.props.signOut}
+              onClick={Auth.signout()}
             >
               Log uit
             </NavItem>

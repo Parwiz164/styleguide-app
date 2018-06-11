@@ -1,6 +1,6 @@
 import React from "react";
 
-const PageContent = () => (
+const HomePageBody = () => (
   <div className="col-xs-12 hi">
     <div className="row firs-content-row">
       <div className="col-xs-4 col-xs-offset-2 first-content-row">
@@ -27,4 +27,4 @@ const PageContent = () => (
   </div>
 );
 
-export default PageContent;
+export default HomePageBody;

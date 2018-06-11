@@ -7,7 +7,10 @@ class Header extends React.Component {
     return (
       <Navbar>
         <Navbar.Header>
-          <Navbar.Brand>Styleguide</Navbar.Brand>
+          <Navbar.Brand>
+            {" "}
+            <a href={"/"}>Styleguide</a>
+          </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
@@ -17,7 +20,9 @@ class Header extends React.Component {
                 marginRight: 15
               }}
               componentClass="span"
-              onClick={Auth.signout()}
+              onClick={() => {
+                Auth.signout();
+              }}
             >
               Log uit
             </NavItem>

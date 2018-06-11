@@ -1,86 +1,83 @@
 import React from "react";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
-import Api from "../services/api";
-import { getSecondPart, getSecondPartTwo } from "../services/helpers";
 import MogelijkhedenPage from "../pages/MogelijkhedenPage";
+import OverzichtPage from "../pages/OverzichtPage";
+import OnlinePage from "../pages/OnlinePage";
+import OfflinePage from "../pages/OfflinePage";
+import TintenPage from "../pages/TintenPage";
+import ToepassingPage from "../pages/ToepassingPage";
+import VolletintenPage from "../pages/VolletintenPage";
 
 class ProjectPage extends React.Component {
   renderContent = page => {
     // eslint-disable-next-line
-    switch (getSecondPart(page.slug)) {
+    switch (page.slug) {
       case "mogelijkheden":
         return <MogelijkhedenPage page={page} />;
         // eslint-disable-next-line
         break;
       case "overzicht":
         //TODO
-        return "";
+        return <OverzichtPage page={page} />;
         // eslint-disable-next-line
         break;
       case "online":
         //TODO
-        return "";
+        return <OnlinePage page={page} />;
         // eslint-disable-next-line
         break;
       case "offline":
         //TODO
-        return "";
+        return <OfflinePage page={page} />;
         // eslint-disable-next-line
         break;
       case "toepassing":
         //TODO
-        return "";
+        return <ToepassingPage page={page} />;
         // eslint-disable-next-line
         break;
       case "tinten":
         //TODO
-        return "";
+        return <TintenPage page={page} />;
+        // eslint-disable-next-line
+        break;
+      case "volletinten":
+        //TODO
+        return <VolletintenPage page={page} />;
         // eslint-disable-next-line
         break;
     }
   };
 
   renderSubpages = page => {
-    var contentPages = this.props.subPages.reduce(function(filtered, option) {
-      if (option.slug.includes(getSecondPart(page.slug))) {
-        filtered.push(option);
-      }
-      return filtered;
-    }, []);
-
-    return (
-      <ListGroupItem
-        key={page.id}
-        onClick={() => {
-          this.props.onChange(page);
-        }}
-      >
-        {console.log(this.props.subPages)}
-        {getSecondPart(page.slug)}
-        <ListGroup>
-          {contentPages.map(content => {
-            return (
-              <ListGroupItem key={content.id}>
-                {content.title.rendered}
-              </ListGroupItem>
-            );
-          })}
-        </ListGroup>
-      </ListGroupItem>
-    );
+    if (page.children) {
+      return page.children.map(child => {
+        return (
+          <ListGroup key={child.id}>
+            {" "}
+            <ListGroupItem className="listgroupitem-parent">
+              {child.title.rendered}
+            </ListGroupItem>{" "}
+            {child.children
+              ? child.children.map(child => {
+                  return (
+                    <ListGroupItem
+                      className="listgroupitem-child"
+                      onClick={() => this.props.onChange(child)}
+                      key={child.id}
+                    >
+                      {child.title.rendered}
+                    </ListGroupItem>
+                  );
+                })
+              : null}{" "}
+          </ListGroup>
+        );
+      });
+    }
   };
 
   render() {
-    // var subPages = this.props.subPages.filter(page => {
-    //   return page.slug.indexOf(`${this.props.pageName.toLowerCase()}-`) > -1;
-    // });
-
-    // var reduced = subPages.reduce(function(filtered, option) {
-    //   if (!option.title.rendered.includes("&#8211;")) {
-    //     filtered.push(option);
-    //   }
-    //   return filtered;
-    // }, []);
     return (
       <div className={"container"}>
         <div className="col-xs-8 content">
@@ -89,7 +86,9 @@ class ProjectPage extends React.Component {
             : "kies een categorie van rechts "}
         </div>
 
-        <div className="col-xs-2 col-xs-offset-2 sidebar" />
+        <div className="col-xs-2 col-xs-offset-2 sidebar">
+          {this.renderSubpages(this.props.fetchedPage[0])}
+        </div>
       </div>
     );
   }

@@ -19,13 +19,13 @@ export default class Api {
     });
   }
 
-  async children(options = {}) {
+  children(options = {}) {
     let url = `${baseUrl}pages`;
 
     if (options.id !== undefined) {
       url += `?parent=${options.id}`;
     }
-    return await fetch(url).then(response => {
+    return fetch(url).then(response => {
       if (response.ok) {
         return response.json();
       } else {
@@ -80,22 +80,6 @@ export default class Api {
       } else {
         throw new Error("Something went wrong ...");
       }
-    });
-  }
-
-  categories() {
-    let url = `${baseUrl}categories`;
-
-    // if (id !== undefined) {
-    //     url += `/${id}`;
-    // }
-
-    return fetch(url).then(res => {
-      if (!res.ok) {
-        throw Error(res.statusText);
-      }
-
-      return res.json();
     });
   }
 

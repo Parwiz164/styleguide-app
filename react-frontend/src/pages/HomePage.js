@@ -1,13 +1,13 @@
 import React from "react";
 import HomePageHeader from "../components/HomePageHeader";
-import PageContent from "../components/PageContent";
+import HomePageBody from "../components/HomePageBody";
 
 class HomePage extends React.Component {
   render() {
     return (
       <div className="container">
         <HomePageHeader {...this.props} />
-        <PageContent />
+        <HomePageBody />
       </div>
     );
   }

@@ -23,11 +23,15 @@ const Auth = {
       .then(page => {
         store(page.id);
       })
-      .catch(error => alert("wachtwoord verkeerd!"));
+      .catch(error => {
+        alert("wachtwoord verkeerd!");
+        window.location.reload(false);
+      });
   },
   signout(fn) {
     sessionStorage.clear();
     localStorage.clear();
+    window.location.replace("/projectpicker");
   }
 };
 

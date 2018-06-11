@@ -45,3 +45,12 @@
     display: inline-block;
     line-height: 20px;
   }
+
+.listgroupitem-parent {
+    font-weight: bold;
+}
+  
+.navbar,
+.navbar-default {
+    background-image: #24b69c !important;
+}

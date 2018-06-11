@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 class Header extends React.Component {
   render() {
     return (
-      <Navbar>
+      <Navbar className="navbar">
         <Navbar.Header>
           <Navbar.Brand>
-            Styleguide{" "}
-            {this.props.projectNaam !== "" ? this.props.projectNaam : ""}{" "}
+            <a href={"/"}>
+              Styleguide{" "}
+              {this.props.projectNaam !== "" ? this.props.projectNaam : ""}{" "}
+            </a>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

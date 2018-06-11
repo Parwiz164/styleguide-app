@@ -1,10 +1,13 @@
 import React from "react";
+
+import Auth from "../services/auth";
 import Api from "../services/api";
+
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import Auth from "../services/Auth";
+
 import ProjectPage from "./ProjectPage";
-import HomePageHeader from "./HomePageHeader";
-import ProjectHeader from "./ProjectHeader";
+import HomePageHeader from "../components/HomePageHeader";
+import ProjectPageHeader from "../components/ProjectPageHeader";
 
 class ProjectPicker extends React.Component {
   state = {
@@ -173,7 +176,7 @@ class ProjectPicker extends React.Component {
     if (this.state.redirect && this.state.fetchedPage !== null) {
       return (
         <div className="container">
-          <ProjectHeader />
+          <ProjectPageHeader />
           <ProjectPage
             fetchedPage={this.state.fetchedPage}
             handleDetails={this.handleProjectDetailts.bind(this)}

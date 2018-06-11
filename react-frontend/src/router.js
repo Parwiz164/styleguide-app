@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import ProjectPicker from "./ProjectPicker";
-import NotFound from "./NotFound";
-import Auth from "../services/Auth";
-import HomePage from "../pages/HomePage";
+import ProjectPicker from "./containers/ProjectPicker";
+import NotFound from "./pages/NotFound";
+import Auth from "./services/auth";
+import HomePage from "./pages/HomePage";
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);

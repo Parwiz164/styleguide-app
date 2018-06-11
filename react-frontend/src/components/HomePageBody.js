@@ -1,7 +1,7 @@
 import React from "react";
 
 const HomePageBody = () => (
-  <div className="col-xs-12 hi">
+  <div className="col-xs-12 home-page-body">
     <div className="row firs-content-row">
       <div className="col-xs-4 col-xs-offset-2 first-content-row">
         <h2>Stap in, leg richtlijn vast en bereik je doel!</h2>

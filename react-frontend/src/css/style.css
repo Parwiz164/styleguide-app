@@ -54,3 +54,8 @@
 .navbar-default {
     background-image: #24b69c !important;
 }
+
+.home-page-body {
+    font-family: roboto;
+    color: red;
+}

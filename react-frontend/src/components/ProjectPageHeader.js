@@ -1,8 +1,8 @@
 import React from "react";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
-import Auth from "../services/Auth";
+import Auth from "../services/auth";
 
-class Header extends React.Component {
+class ProjectPageHeader extends React.Component {
   render() {
     return (
       <Navbar>
@@ -33,4 +33,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default ProjectPageHeader;

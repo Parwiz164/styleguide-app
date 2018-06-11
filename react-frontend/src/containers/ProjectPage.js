@@ -1,5 +1,7 @@
 import React from "react";
+
 import { ListGroup, ListGroupItem } from "react-bootstrap";
+
 import MogelijkhedenPage from "../pages/MogelijkhedenPage";
 import OverzichtPage from "../pages/OverzichtPage";
 import OnlinePage from "../pages/OnlinePage";
